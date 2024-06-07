@@ -1,5 +1,24 @@
 ---
-import LibraryIcon from "../icons/LibraryIcon.astro";
+import HomeIcon from "../icons/Home.astro";
+import SearchIcon from "../icons/Search.astro";
+import LibraryIcon from "../icons/Library.astro";
+import AsideMenuItem from "./AsideMenuItem.astro";
 ---
 
-<LibraryIcon />
+<nav class="flex-1 flex flex-col gap-2">
+  <div class="bg-zinc-900 rounded-lg p-2">
+    <ul>
+      <AsideMenuItem href="/">
+        <HomeIcon class="text-zinc-400" size={32} />
+        Inicio
+      </AsideMenuItem>
+    </ul>
+
+    <ul>
+      <AsideMenuItem href="/search">
+        <SearchIcon />
+        Buscar
+      </AsideMenuItem>
+    </ul>
+  </div>
+</nav>

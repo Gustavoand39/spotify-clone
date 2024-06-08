@@ -1,4 +1,5 @@
-import { Pause, Play } from "./Player";
+import Pause from "@/icons/Pause.tsx";
+import Play from "@/icons/Play.tsx";
 import { usePlayerStore } from "@/store/playerStore";
 
 interface CardPlayButtonProps {

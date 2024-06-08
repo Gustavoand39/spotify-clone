@@ -1,5 +1,6 @@
 import { usePlayerStore } from "@/store/playerStore";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { Slider } from "./Slider";
 
 export const Pause = ({ className }: { className?: string }) => (
   <svg
@@ -27,11 +28,48 @@ export const Play = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const CurrentSongPlaying = ({
+  image,
+  title,
+  artists,
+}: {
+  image: string;
+  title: string;
+  artists: string | string[];
+}) => {
+  return (
+    <div className="flex items-center gap-5 relative overflow-hidden">
+      <picture className="w-16 h-16 bg-zinc-800 rounded-md shadow-lg overflow-hidden">
+        <img src={image} alt={title} />
+      </picture>
+
+      <div className="flex flex-col">
+        <h3 className="font-semibold text-sm block">
+          {title.length > 20 ? `${title.slice(0, 20)}...` : title}
+        </h3>
+
+        {
+          <p className="text-xs text-zinc-400">
+            {Array.isArray(artists)
+              ? artists.join(", ").length > 20
+                ? `${artists.join(", ").slice(0, 20)}...`
+                : artists.join(", ")
+              : artists.length > 20
+              ? `${artists.slice(0, 20)}...`
+              : artists}
+          </p>
+        }
+      </div>
+    </div>
+  );
+};
+
 const Player = (): JSX.Element => {
   const { currentSong, isPlaying, setIsPlaying } = usePlayerStore(
     (state) => state
   );
   const audioRef = useRef<HTMLAudioElement>(null);
+  const volumeRef = useRef<number>(1);
 
   useEffect(() => {
     isPlaying ? audioRef.current?.play() : audioRef.current?.pause();
@@ -43,6 +81,7 @@ const Player = (): JSX.Element => {
     if (song && audioRef.current) {
       const src = `/music/${playlist?.id}/0${song.id}.mp3`;
       audioRef.current.src = src;
+      audioRef.current.volume = volumeRef.current;
       audioRef.current.play();
     }
   }, [currentSong]);
@@ -50,8 +89,14 @@ const Player = (): JSX.Element => {
   const handleClick = () => setIsPlaying(!isPlaying);
 
   return (
-    <div className="flex flex-row justify-between w-full px-4 z-50">
-      <div>CurrentSong...</div>
+    <div className="flex flex-row justify-between items-center w-full h-full px-4 z-50">
+      <div>
+        <CurrentSongPlaying
+          image={currentSong.song?.image || ""}
+          title={currentSong.song?.title || ""}
+          artists={currentSong.song?.artists || ""}
+        />
+      </div>
 
       <div className="flex-1 grid place-content-center gap-4">
         <div className="flex justify-center">
@@ -61,7 +106,22 @@ const Player = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="grid place-content-center">Volumen</div>
+      <div className="grid place-content-center">
+        <Slider
+          defaultValue={[100]}
+          max={100}
+          min={0}
+          className="w-24"
+          onValueChange={(value) => {
+            if (audioRef.current) {
+              const [newVolume] = value;
+              const volumeValue = newVolume / 100;
+              volumeRef.current = volumeValue;
+              audioRef.current.volume = volumeValue;
+            }
+          }}
+        />
+      </div>
 
       <audio ref={audioRef} />
     </div>

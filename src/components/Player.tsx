@@ -1,3 +1,4 @@
+import { usePlayerStore } from "@/store/playerStore";
 import { useEffect, useRef, useState } from "react";
 
 export const Pause = ({ className }: { className?: string }) => (
@@ -27,25 +28,26 @@ export const Play = ({ className }: { className?: string }) => (
 );
 
 const Player = (): JSX.Element => {
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [currentSong, setCurrentSong] = useState<string>("");
+  const { currentSong, isPlaying, setIsPlaying } = usePlayerStore(
+    (state) => state
+  );
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    if (audioRef.current) audioRef.current.src = "/music/1/01.mp3";
-  }, []);
+    isPlaying ? audioRef.current?.play() : audioRef.current?.pause();
+  }, [isPlaying]);
 
-  const handleClick = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
+  useEffect(() => {
+    const { song, playlist, songs } = currentSong;
 
-      setIsPlaying(!isPlaying);
+    if (song && audioRef.current) {
+      const src = `/music/${playlist?.id}/0${song.id}.mp3`;
+      audioRef.current.src = src;
+      audioRef.current.play();
     }
-  };
+  }, [currentSong]);
+
+  const handleClick = () => setIsPlaying(!isPlaying);
 
   return (
     <div className="flex flex-row justify-between w-full px-4 z-50">

@@ -35,14 +35,12 @@ const Player = (): JSX.Element => {
   const handleClick = () => setIsPlaying(!isPlaying);
 
   return (
-    <div className="flex flex-row justify-between items-center w-full h-full px-4 z-50 my-2">
-      <div>
-        <CurrentSongPlaying
-          image={currentSong.song?.image || ""}
-          title={currentSong.song?.title || ""}
-          artists={currentSong.song?.artists || ""}
-        />
-      </div>
+    <div className="flex flex-row justify-between items-center w-full px-4 z-50 my-2">
+      <CurrentSongPlaying
+        image={currentSong.song?.image || ""}
+        title={currentSong.song?.title || ""}
+        artists={currentSong.song?.artists || ""}
+      />
 
       <div className="flex-1 grid place-content-center gap-4">
         <div className="flex flex-col justify-center items-center">

@@ -7,8 +7,7 @@ import { playlists } from "@/lib/data";
 
 <Layout title="Spotify Clone">
   <div
-    id="playlist-container"
-    class="relative transition-all durattion-1000 bg-green-600"
+    class="relative transition-all durattion-1000 backdrop-blur-lg bg-gradient-to-t from-zinc-900 via-zinc-900 to-green-500/80"
   >
     <div class="relative z-10 px-6 pt-10">
       <Greetings />
@@ -18,10 +17,7 @@ import { playlists } from "@/lib/data";
       </div>
     </div>
 
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-[1]"
-    >
-    </div>
+    <div class="absolute inset-0 -z-[1]"></div>
   </div>
 </Layout>
 

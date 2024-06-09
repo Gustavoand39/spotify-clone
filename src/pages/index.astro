@@ -7,17 +7,15 @@ import { playlists } from "@/lib/data";
 
 <Layout title="Spotify Clone">
   <div
-    class="relative transition-all durattion-1000 backdrop-blur-lg bg-gradient-to-t from-zinc-900 via-zinc-900 to-green-500/80"
+    class="relative transition-all duration-1000 backdrop-blur-lg bg-gradient-to-t from-zinc-900 via-zinc-900 to-green-500"
   >
-    <div class="relative z-10 px-6 pt-10">
+    <div class="relative z-10 px-6 py-10">
       <Greetings />
 
       <div class="flex flex-wrap mt-6 gap-4">
         {playlists.map((playlist) => <PlayListItemCard playlist={playlist} />)}
       </div>
     </div>
-
-    <div class="absolute inset-0 -z-[1]"></div>
   </div>
 </Layout>
 

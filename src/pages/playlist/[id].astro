@@ -7,6 +7,8 @@ import { allPlaylists, songs } from "@/lib/data";
 const { id } = Astro.params;
 
 const playlist = allPlaylists.find((playlist) => playlist.id === id);
+const playlistColor = playlist?.color.accent || "#000000";
+
 const playListSongs = songs.filter(
   (song) => song.albumId === playlist?.albumId
 );
@@ -22,8 +24,8 @@ const totalDurationInMinutes = totalDurationInSeconds / 60;
 <Layout title="Spotify Clone">
   <div
     id="playlist-container"
-    class="relative flex flex-col h-full bg-zinc-900 overflow-x-hidden"
-    transition:name=`playlist ${id} box`
+    class="relative flex flex-col h-full overflow-x-hidden"
+    style={`background: linear-gradient(to top, #18181b 50%, ${playlistColor});`}
   >
     <!-- <PageHeader /> -->
 
@@ -33,7 +35,7 @@ const totalDurationInMinutes = totalDurationInSeconds / 60;
           src={playlist?.cover}
           alt={`Cover of ${playlist?.title}`}
           class="object-cover w-full h-full shadow-lg"
-          transition:name=`playlist ${playlist?.id} image`
+          transition:name={`playlist ${playlist?.id} image`}
         />
       </picture>
 
@@ -42,13 +44,13 @@ const totalDurationInMinutes = totalDurationInSeconds / 60;
         <div>
           <h1 class="text-5xl font-bold block text-white">
             {playlist?.title}
-            <span transition:name=`playlist ${playlist?.id} title`></span>
+            <span transition:name={`playlist ${playlist?.id} title`}></span>
           </h1>
         </div>
 
         <div class="flex-1 flex items-end">
           <div class="text-sm text-gray-300 font-normal">
-            <div transition:name=`playlist ${playlist?.id} artists`>
+            <div transition:name={`playlist ${playlist?.id} artists`}>
               <span>{playlist?.artists.join(", ")}</span>
             </div>
             <p class="mt-1">

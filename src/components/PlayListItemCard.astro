@@ -24,22 +24,21 @@ const { id, cover, title, description } = playlist;
 
   <a
     href={`/playlist/${id}`}
-    class="playlist-item transition-all duration-300 flex relative p-2 overflow-hidden gap-2 pb-6 rounded-md w-44 flex-col"
-    transition:name=`playlist ${id} box`
+    class="playlist-item transition-all duration-300 flex p-2 gap-2 pb-6 rounded-md w-44 flex-col"
   >
-    <picture class="aspect-square w-full h-auto flex-none">
+    <picture class="aspect-square w-full h-auto">
       <img
         src={cover}
         alt={`Cover of ${title}`}
         class="object-cover w-full h-full rounded-md"
-        transition:name=`playlist ${id} image`
+        transition:name={`playlist ${id} image`}
       />
     </picture>
 
     <div class="flex flex-auto flex-col gap-2 px-2">
       <h4
         class="text-white text-base truncate"
-        transition:name=`playlist ${id} title`
+        transition:name={`playlist ${id} title`}
         title={title}
       >
         {title}
@@ -47,7 +46,7 @@ const { id, cover, title, description } = playlist;
 
       <span
         class="text-sm text-gray-400 group-hover:text-white/80"
-        transition:name=`playlist ${id} description`
+        transition:name={`playlist ${id} description`}
       >
         {description}
       </span>

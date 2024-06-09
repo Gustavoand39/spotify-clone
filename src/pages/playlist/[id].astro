@@ -35,7 +35,7 @@ const totalDurationInMinutes = totalDurationInSeconds / 60;
           src={playlist?.cover}
           alt={`Cover of ${playlist?.title}`}
           class="object-cover w-full h-full shadow-lg"
-          transition:name={`playlist ${playlist?.id} image`}
+          transition:name={`playlist ${id} image`}
         />
       </picture>
 
@@ -44,7 +44,7 @@ const totalDurationInMinutes = totalDurationInSeconds / 60;
         <div>
           <h1 class="text-5xl font-bold block text-white">
             {playlist?.title}
-            <span transition:name={`playlist ${playlist?.id} title`}></span>
+            <span transition:name={`playlist ${id} title`}></span>
           </h1>
         </div>
 

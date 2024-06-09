@@ -34,7 +34,7 @@ const totalDurationInMinutes = totalDurationInSeconds / 60;
         <img
           src={playlist?.cover}
           alt={`Cover of ${playlist?.title}`}
-          class="object-cover w-full h-full shadow-lg"
+          class="object-cover w-full h-ful rounded-lg shadow-lg"
           transition:name={`playlist ${id} image`}
         />
       </picture>
@@ -64,13 +64,6 @@ const totalDurationInMinutes = totalDurationInSeconds / 60;
 
     <div class="pl-6 pt-6">
       <CardPlayButton client:load id={id || ""} size="large" />
-    </div>
-
-    <div class="relative z-10 px-6 pt-10"></div>
-
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-[1]"
-    >
     </div>
 
     <section class="p-6">

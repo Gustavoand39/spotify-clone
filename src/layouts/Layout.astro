@@ -22,8 +22,8 @@ const { title } = Astro.props;
     <ViewTransitions fallback="none" />
   </head>
 
-  <body>
-    <div id="app" class="relative h-screen p-2 gap-2">
+  <body class="h-screen">
+    <div class="app-container p-2 gap-2">
       <aside class="[grid-area:aside] flex-col flex overflow-x-hidden">
         <AsideMenu />
       </aside>
@@ -40,13 +40,14 @@ const { title } = Astro.props;
     </div>
 
     <style>
-      #app {
+      .app-container {
         display: grid;
         grid-template-areas:
           "aside main"
           "player player";
-        grid-template-columns: 350px 1fr;
-        grid-template-rows: auto auto;
+        grid-template-columns: 300px 1fr;
+        grid-template-rows: 1fr auto;
+        max-height: 100vh;
       }
     </style>
 
@@ -59,11 +60,11 @@ const { title } = Astro.props;
         font-family: "CircularStd", system-ui, sans-serif;
         background: #010101;
         color: white;
-        overflow: auto;
+        overflow: hidden;
       }
 
       body {
-        overflow: auto;
+        overflow: hidden;
       }
 
       @font-face {

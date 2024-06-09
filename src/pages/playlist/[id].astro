@@ -50,8 +50,8 @@ const totalDurationInMinutes = totalDurationInSeconds / 60;
 
         <div class="flex-1 flex items-end">
           <div class="text-sm text-gray-300 font-normal">
-            <div transition:name={`playlist ${playlist?.id} artists`}>
-              <span>{playlist?.artists.join(", ")}</span>
+            <div transition:name={`playlist ${id} description`}>
+              <span>{playlist?.description}</span>
             </div>
             <p class="mt-1">
               <span class="text-white">{playListSongs.length} canciones</span>,

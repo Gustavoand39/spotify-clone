@@ -7,6 +7,7 @@ export interface Playlist {
   color: (typeof colors)[keyof typeof colors];
   cover: string;
   artists: string[];
+  description: string;
 }
 
 export const playlists: Playlist[] = [
@@ -18,6 +19,7 @@ export const playlists: Playlist[] = [
     cover:
       "https://vinyl.lofirecords.com/cdn/shop/products/VINYL_MORNING_COFFEE_4-min.png?v=1680526353",
     artists: ["NoSpirit", "Casiio"],
+    description: "Música para relajarse y concentrarse en el trabajo.",
   },
   {
     id: "2",
@@ -27,6 +29,7 @@ export const playlists: Playlist[] = [
     cover:
       "https://vinyl.lofirecords.com/cdn/shop/files/2amsynth-vinyl.png?v=1693312187",
     artists: ["Kupla", "Blue Fox"],
+    description: "Tomar un café y disfrutar de la música.",
   },
   {
     id: "3",
@@ -35,6 +38,7 @@ export const playlists: Playlist[] = [
     color: colors.rose,
     cover: "https://f4.bcbits.com/img/a1435058381_65.jpg",
     artists: ["Tenno", "xander", "Team Astro"],
+    description: "Relájate y concéntrate en tus tareas.",
   },
   {
     id: "4",
@@ -43,6 +47,7 @@ export const playlists: Playlist[] = [
     color: colors.blue,
     cover: "https://f4.bcbits.com/img/a1962013209_16.jpg",
     artists: ["Raimu", "Yasumu"],
+    description: "¿Música para estudiar? ¡Aquí la tienes!",
   },
   {
     id: "5",
@@ -51,6 +56,7 @@ export const playlists: Playlist[] = [
     color: colors.purple,
     cover: "https://f4.bcbits.com/img/a2793859494_16.jpg",
     artists: ["Chau Saura", "amies", "kyu"],
+    description: "Chill out con la mejor música de Chau Saura.",
   },
   {
     id: "6",
@@ -59,6 +65,7 @@ export const playlists: Playlist[] = [
     color: colors.orange,
     cover: "https://f4.bcbits.com/img/a0363730459_16.jpg",
     artists: ["WFS", "Nadav Cohen"],
+    description: "Descansar y escuchar música también es una necesidad.",
   },
 ];
 
@@ -312,6 +319,51 @@ export const songs: Song[] = [
     image: "https://f4.bcbits.com/img/a2793859494_16.jpg",
     artists: ["LoFi Dreamer"],
     album: "Chill Lo-Fi Music",
+    duration: "4:20",
+  },
+  {
+    id: 1,
+    albumId: 6,
+    title: "Silent Rain",
+    image: "https://f4.bcbits.com/img/a0363730459_16.jpg",
+    artists: ["Urban Nocturne"],
+    album: "Midnight Tales",
+    duration: "3:40",
+  },
+  {
+    id: 2,
+    albumId: 6,
+    title: "Lost Pages",
+    image: "https://f4.bcbits.com/img/a0363730459_16.jpg",
+    artists: ["Urban Nocturne"],
+    album: "Midnight Tales",
+    duration: "3:20",
+  },
+  {
+    id: 3,
+    albumId: 6,
+    title: "Midnight Tales",
+    image: "https://f4.bcbits.com/img/a0363730459_16.jpg",
+    artists: ["Urban Nocturne"],
+    album: "Midnight Tales",
+    duration: "3:50",
+  },
+  {
+    id: 4,
+    albumId: 6,
+    title: "City Lights",
+    image: "https://f4.bcbits.com/img/a0363730459_16.jpg",
+    artists: ["Urban Nocturne"],
+    album: "Midnight Tales",
+    duration: "3:30",
+  },
+  {
+    id: 5,
+    albumId: 6,
+    title: "Night Drive",
+    image: "https://f4.bcbits.com/img/a0363730459_16.jpg",
+    artists: ["Urban Nocturne"],
+    album: "Midnight Tales",
     duration: "4:20",
   },
 ];
